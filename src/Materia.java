@@ -1,31 +1,21 @@
 
 public class Materia {
 	private String nombre;
-	private Horario horario[];
-	//private Profesor profesor;
+	private byte id;
+	private static byte _id = 0;
 	
 	public Materia (String nombre) {
 		this.nombre = nombre;
 		horario = new Horario[2];
+		_id += 1;
+		id = _id;
 	}
 
-	public Horario[] getHorario() {
-		return horario;
-	}
-
-	public void setHorario(Horario[] horario) {
-		this.horario = horario;
-	}
-/*
-	public Profesor getProfesor() {
-		return profesor;
-	}
-
-	public void setProfesor(Profesor profesor) {
-		this.profesor = profesor;
-	}
-*/
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public byte getId () {
+		retur id;
 	}
 }
