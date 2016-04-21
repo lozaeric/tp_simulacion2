@@ -37,7 +37,7 @@ public class Funcion {
 					fitness+=20;
 		}		
 		if (contadorMaterias.keySet ().size ()>=Poblacion.materias.size ())
-			fitness*=1.1;
+			fitness*=1.05;
 		return fitness;
 	}
 	
