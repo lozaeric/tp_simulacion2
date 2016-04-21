@@ -20,8 +20,14 @@ public class Individuo {
 	
 	public String toString () {
 		StringBuilder sb = new StringBuilder ();
-		for (int i=0; i<adnB.length/5; i+=2) 
-			sb.append(Poblacion.getProfesor (Individuo.binInt (Arrays.copyOfRange (adnB, 5*i, 5*(i+1))))+" "+Poblacion.getMateria (Individuo.binInt (Arrays.copyOfRange (adnB, 5*(i+1), 5*(i+2))))+'\n');
+		int idP, idM;
+		
+		for (int i=0; i<adnB.length/5; i+=2) {
+			idP = Individuo.binInt (Arrays.copyOfRange (adnB, 5*i, 5*(i+1)));
+			idM = Individuo.binInt (Arrays.copyOfRange (adnB, 5*(i+1), 5*(i+2)));
+			if (Poblacion.getProfesor (idP)!=null && Poblacion.getMateria (idM)!=null)
+				sb.append(Poblacion.getProfesor (idP)+" "+Poblacion.getMateria (idM)+'\n');
+		}
 		return sb.toString ();
 	}
 

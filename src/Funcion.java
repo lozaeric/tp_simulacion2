@@ -34,10 +34,9 @@ public class Funcion {
 		}
 		for (Integer i : contador.keySet ()) {
 				if (contador.get (i)<=Poblacion.getProfesor (i).getHorarios ().length/2)
-					fitness+=20;
+					fitness+=25;
 		}		
-		if (contadorMaterias.keySet ().size ()>=Poblacion.materias.size ())
-			fitness*=1.05;
+		fitness*=1+(contadorMaterias.keySet ().size ()/100d);
 		return fitness;
 	}
 	
