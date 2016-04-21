@@ -1,19 +1,19 @@
+import java.util.Arrays;
+
 
 public class Profesor {
-	private String[] materias;
+	private Materia[] materias;
 	private Horario[] horarios;
 	private String nombre;
-	private byte id;
-	private static byte _id = 0;
+	public static int contadorHorarios = 0;
 	
-	public Profesor(String[] materias, Horario[] horarios, String nombre) {
+	public Profesor(Materia[] materias, Horario[] horarios, String nombre) {
 		this.materias = materias;
 		this.horarios = horarios;
 		this.nombre = nombre;
-		_id += 1;
-		id = _id;
+		contadorHorarios += horarios.length;
 	}
-	public String[] getMaterias() {
+	public Materia[] getMaterias() {
 		return materias;
 	}
 	public Horario[] getHorarios() {
@@ -23,7 +23,23 @@ public class Profesor {
 		return nombre;
 	}
 	
-	public byte getId () {
+	public int getId () {
+		int id = 0;
+		for (char c : nombre.toCharArray ())
+			id += c-96;
 		return id;
+	}
+	public static int getId (String nombre) {
+		int id = 0;
+		for (char c : nombre.toCharArray ())
+			id += c-96;
+		return id;
+	}
+	public String toString () {
+	   return "Profesor [nombre=" + nombre + "]";
+   }
+	
+	public static int getContadorH () {
+		return contadorHorarios;
 	}
 }
