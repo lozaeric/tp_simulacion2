@@ -28,15 +28,15 @@ public class Funcion {
 					contadorMaterias.put (Individuo.binInt (Arrays.copyOfRange (comision, 5 , 10)), 1);						
 				for (Materia materia : p.getMaterias ()) {
 					if (materia.getNombre ().equals (m.getNombre ())) 
-						fitness+=10;
+						fitness+=20;
 				}
 			}
 		}
 		for (Integer i : contador.keySet ()) {
 				if (contador.get (i)<=Poblacion.getProfesor (i).getHorarios ().length/2)
-					fitness+=25;
+					fitness+=20;
 		}		
-		fitness*=1+(contadorMaterias.keySet ().size ()/100d);
+		fitness+=contadorMaterias.keySet ().size ();
 		return fitness;
 	}
 	

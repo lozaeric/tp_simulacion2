@@ -10,18 +10,6 @@ public class Materia {
 		return nombre;
 	}
 	
-	public int getId () {
-		int id = 0;
-		for (char c : nombre.toCharArray ())
-			id += c-96;
-		return id;
-	}
-	public static int getId (String nombre) {
-		int id = 0;
-		for (char c : nombre.toCharArray ())
-			id += c-96;
-		return id;
-	}
 	public String toString () {
 	   return "Materia [nombre=" + nombre + "]";
    }

@@ -21,10 +21,13 @@ public class Main {
 		Materia m3[] = new Materia[] {Poblacion.getMateria("objetos")};
 		Materia m4[] = new Materia[] {Poblacion.getMateria("circuitos")};
 		ArrayList<Profesor> profesores = new ArrayList<Profesor>();
-		profesores.add (new Profesor (m,h, "dangiolo"));
-		profesores.add (new Profesor (m2,h2, "ezequiel"));		
-		profesores.add (new Profesor (m3,h2, "fernando"));
-		profesores.add (new Profesor (m4,h4, "ruiz"));	
+		profesores.add (new Profesor (m,h, "a"));
+		profesores.add (new Profesor (m2,h2, "b"));		
+		profesores.add (new Profesor (m3,h2, "c"));
+		profesores.add (new Profesor (m4,h4, "d"));	
+		profesores.add (new Profesor (m2,h2, "e"));		
+		profesores.add (new Profesor (m3,h2, "f"));
+		profesores.add (new Profesor (m4,h4, "g"));			
 		Poblacion.profesores = profesores;
 		
 		//Configuracion de otros parametros
@@ -32,7 +35,7 @@ public class Main {
 		Poblacion.f = new Funcion ();
 		Poblacion.mutacion = 0.01;
 		Poblacion p = new Poblacion ();
-		Individuo mejor = p.ejecutar (50); //iteraciones
+		Individuo mejor = p.ejecutar (40); //iteraciones
 		
 		
 		

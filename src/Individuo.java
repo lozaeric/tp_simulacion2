@@ -25,7 +25,7 @@ public class Individuo {
 		for (int i=0; i<adnB.length/5; i+=2) {
 			idP = Individuo.binInt (Arrays.copyOfRange (adnB, 5*i, 5*(i+1)));
 			idM = Individuo.binInt (Arrays.copyOfRange (adnB, 5*(i+1), 5*(i+2)));
-			if (Poblacion.getProfesor (idP)!=null && Poblacion.getMateria (idM)!=null)
+			if (Poblacion.getProfesor (idP)!=null && Poblacion.getMateria (idM)!=null && Poblacion.getProfesor(idP).esSuMateria(Poblacion.getMateria(idM)))
 				sb.append(Poblacion.getProfesor (idP)+" "+Poblacion.getMateria (idM)+'\n');
 		}
 		return sb.toString ();

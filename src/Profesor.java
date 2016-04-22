@@ -23,20 +23,16 @@ public class Profesor {
 		return nombre;
 	}
 	
-	public int getId () {
-		int id = 0;
-		for (char c : nombre.toCharArray ())
-			id += c-96;
-		return id;
+	public boolean esSuMateria (Materia materia) {
+		for (Materia m : materias) {
+			if (m.equals(materia))
+				return true;
+		}
+		return false;
 	}
-	public static int getId (String nombre) {
-		int id = 0;
-		for (char c : nombre.toCharArray ())
-			id += c-96;
-		return id;
-	}
+	
 	public String toString () {
-	   return "Profesor [nombre=" + nombre + "]";
+	   return "Profesor [nombre=" + nombre + ", materias = "+Arrays.toString(materias)+"]";
    }
 	
 	public static int getContadorH () {
