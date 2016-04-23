@@ -1,42 +1,36 @@
 import java.util.Arrays;
 
 
+
 public class Individuo {
-	private byte[] adnB;
+	private Comision comisiones[];
 
 	public Individuo () {
-		adnB = new byte[Poblacion.max];		
-		for (int i=0; i<adnB.length; i++) 
-			adnB[i] = (byte) (Math.random ()>=0.5? 1:0);
+		comisiones = new Comision[Poblacion.max];		
+		for (int i=0; i<comisiones.length; i++) 
+			comisiones[i] = new Comision(Poblacion.profesores.get((int) (Math.random ()*Poblacion.profesores.size ())), Poblacion.materias.get ((int) (Math.random ()*Poblacion.materias.size ())));
+		Arrays.sort (comisiones, new ComparadorComision ());
+	}
+	
+	public Individuo (Comision comisiones[]) {
+		this.comisiones = comisiones;
    }
 	
-	public Individuo (byte[] adnB) {
-		this.adnB = adnB;
-   }
-	
-	public byte[] getAdnB () {
-		return adnB;
+	public Comision[] getAdn () {
+		return comisiones;
 	}
 	
 	public String toString () {
 		StringBuilder sb = new StringBuilder ();
-		int idP, idM;
+		int[] contadorP = new int[Poblacion.profesores.size ()];
 		
-		for (int i=0; i<adnB.length/5; i+=2) {
-			idP = Individuo.binInt (Arrays.copyOfRange (adnB, 5*i, 5*(i+1)));
-			idM = Individuo.binInt (Arrays.copyOfRange (adnB, 5*(i+1), 5*(i+2)));
-			if (Poblacion.getProfesor (idP)!=null && Poblacion.getMateria (idM)!=null && Poblacion.getProfesor(idP).esSuMateria(Poblacion.getMateria(idM)))
-				sb.append(Poblacion.getProfesor (idP)+" "+Poblacion.getMateria (idM)+'\n');
+		for (Comision c : comisiones) {
+			contadorP[Poblacion.profesores.indexOf (c.getProfesor ())]++;
+			if (contadorP[Poblacion.profesores.indexOf (c.getProfesor ())]<=c.getProfesor ().getHorarios ().length/2 && c.getProfesor ().esSuMateria (c.getMateria ()))
+				sb.append(c.getProfesor ().toString ()+'\t'+c.getMateria ().toString ()+'\n');
+			else
+				System.out.println ("Comision incoherente, sus datos son obviados"+'\n');
 		}
 		return sb.toString ();
-	}
-
-	
-	public static int binInt (byte[] adn) {
-		int adnI = 0;
-		
-		for (int i=0; i<adn.length; i++) 
-			adnI += Math.pow (2, adn.length-1-i) * adn[i];
-		return adnI;
 	}
 }

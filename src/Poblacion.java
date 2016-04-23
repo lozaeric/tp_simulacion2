@@ -5,9 +5,9 @@ import java.util.Arrays;
 
 public class Poblacion {
 	private Individuo[] individuos;
-	public static int max = 0;
+	public static int max;
 	public static Funcion f;
-	public static double mutacion = 0.02;
+	public static double mutacion;
 	public static ArrayList<Profesor> profesores = new ArrayList<Profesor> ();
 	public static ArrayList<Materia> materias = new ArrayList<Materia> ();
 	
@@ -31,21 +31,21 @@ public class Poblacion {
 		return individuos[0];
 	}
 	private Individuo[] crearHijos () {
-		Individuo[] padres = padresAptos (), hijos = new Individuo[350];
+		Individuo[] padres = padresAptos (), hijos = new Individuo[300];
 
-		for (int i=0; i<700; i+=2) 
+		for (int i=0; i<600; i+=2) 
 			hijos[i/2] = procrear (padres[i], padres[i+1]);
 		
 		return hijos;
 	}
 	
 	private Individuo[] padresAptos () {
-		Individuo i, _elegidos[] = new Individuo[700];
+		Individuo i, _elegidos[] = new Individuo[600];
 		int m=0;
 		
 		Arrays.sort (individuos, new Comparador ());
 		do {
-			i = individuos[(int)(Math.random ()*200)];
+			i = individuos[(int)(Math.random ()*250)];
 			if (m<_elegidos.length && m%2==1 && !_elegidos[m-1].equals (i))
 				_elegidos[m++] = i;
 			else if (m<_elegidos.length && m%2==0)
@@ -56,14 +56,11 @@ public class Poblacion {
 	}
 	
 	private static Individuo procrear (Individuo i1, Individuo i2) {
-		byte[] adn1 = i1.getAdnB (), adn2 = i2.getAdnB (), nuevoAdn = new byte[adn1.length];
-		
-		//System.out.println (Individuo.binInt (adn1)+" "+Individuo.binInt (adn2));
-		for (int i=0; i<nuevoAdn.length; i++) {
-			nuevoAdn[i] = adn1[i]==adn2[i]? adn1[i]:(byte)(Math.random ()*2);
-			if (Math.random ()<=mutacion)
-				nuevoAdn[i] = (byte) (nuevoAdn[i]==1? 0:1);
-		}
+		Comision[] adn1 = i1.getAdn (), adn2 = i2.getAdn (), nuevoAdn = new Comision[Poblacion.max];
+		Arrays.sort (adn1, new ComparadorComision ());
+		Arrays.sort (adn2, new ComparadorComision ());
+		for (int i=0; i<adn1.length; i++) 
+			nuevoAdn[i] = adn1[i].combinar(adn2[i]);
 		
 		return new Individuo (nuevoAdn);
 	}

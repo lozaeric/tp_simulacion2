@@ -1,42 +1,33 @@
-import java.util.Arrays;
-import java.util.HashMap;
 
 
 public class Funcion {
-	public static long ejecutar (byte[] adnB) {
-		int divisiones = adnB.length/10;
-		long fitness = 0;
-		HashMap<Integer, Integer> contador = new HashMap<Integer,Integer>(), contadorMaterias = new HashMap<Integer,Integer>();
+	public static double ejecutar (Comision[] adn) {
+		double fitness = 0;
+		int[] contadorP = new int[Poblacion.profesores.size ()], contadorM = new int[Poblacion.materias.size ()];
 		Profesor p;
 		Materia m;
 		
-		for (int i=0; i<divisiones; i++) {
-			byte[] comision = Arrays.copyOfRange (adnB, 10*i, 10*(i+1));
+		for (Comision c : adn) {
+			p = c.getProfesor ();
+			m = c.getMateria();
 			
-
-			p = Poblacion.getProfesor (Individuo.binInt (Arrays.copyOfRange (comision, 0 , 5)));
-			m = Poblacion.getMateria(Individuo.binInt (Arrays.copyOfRange (comision, 5, 10)));
-			
-			if (p!=null && m!=null) {
-				if (contador.containsKey (Individuo.binInt (Arrays.copyOfRange (comision, 0 , 5))))
-					contador.put (Individuo.binInt (Arrays.copyOfRange (comision, 0 , 5)), 1+contador.get (Individuo.binInt (Arrays.copyOfRange (comision, 0 , 5))));
-				else
-					contador.put (Individuo.binInt (Arrays.copyOfRange (comision, 0 , 5)), 1);			
-				if (contadorMaterias.containsKey (Individuo.binInt (Arrays.copyOfRange (comision, 5 , 10))))
-					contadorMaterias.put (Individuo.binInt (Arrays.copyOfRange (comision, 5 , 10)), 1+contadorMaterias.get (Individuo.binInt (Arrays.copyOfRange (comision, 5 , 10))));
-				else
-					contadorMaterias.put (Individuo.binInt (Arrays.copyOfRange (comision, 5 , 10)), 1);						
-				for (Materia materia : p.getMaterias ()) {
-					if (materia.getNombre ().equals (m.getNombre ())) 
+			if (p!=null) {
+				fitness+=5;
+				if (contadorP[Poblacion.profesores.indexOf (p)]++==0)
+					fitness+=350;
+				if (contadorP[Poblacion.profesores.indexOf (p)]<p.getHorarios ().length/2)
+					fitness+=500;
+				else if (contadorP[Poblacion.profesores.indexOf (p)]==p.getHorarios ().length/2) 
+					fitness+=1000;
+				if (m!=null) {			
+					fitness+=10;
+					if (contadorM[Poblacion.materias.indexOf (m)]++==0)
+						fitness+=350;			
+					if (p.esSuMateria (m)) 
 						fitness+=20;
 				}
 			}
 		}
-		for (Integer i : contador.keySet ()) {
-				if (contador.get (i)<=Poblacion.getProfesor (i).getHorarios ().length/2)
-					fitness+=20;
-		}		
-		fitness+=contadorMaterias.keySet ().size ();
 		return fitness;
 	}
 	

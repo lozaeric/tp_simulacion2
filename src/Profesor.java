@@ -11,7 +11,7 @@ public class Profesor {
 		this.materias = materias;
 		this.horarios = horarios;
 		this.nombre = nombre;
-		contadorHorarios += horarios.length;
+		contadorHorarios += horarios.length/2;
 	}
 	public Materia[] getMaterias() {
 		return materias;
