@@ -10,9 +10,20 @@ public class Poblacion {
 	public static double mutacion;
 	public static ArrayList<Profesor> profesores = new ArrayList<Profesor> ();
 	public static ArrayList<Materia> materias = new ArrayList<Materia> ();
+	public static ArrayList<Horario> horarios = new ArrayList<Horario> ();
 	
 	public Poblacion () {
 		individuos = new Individuo [1000];
+		horarios.add(new Horario("lunes","mañana"));
+		horarios.add(new Horario("martes","mañana"));
+		horarios.add(new Horario("miercoles","mañana"));
+		horarios.add(new Horario("jueves","mañana"));
+		horarios.add(new Horario("viernes","mañana"));
+		horarios.add(new Horario("lunes","noche"));
+		horarios.add(new Horario("martes","noche"));
+		horarios.add(new Horario("miercoles","noche"));
+		horarios.add(new Horario("jueves","noche"));
+		horarios.add(new Horario("viernes","noche"));
 		for (int i=0; i<individuos.length; i++) 
 			individuos[i] = new Individuo ();
 	}
@@ -74,6 +85,12 @@ public class Poblacion {
 	public static Profesor getProfesor (int id) {
 		if (profesores.size ()>id) 
 			return profesores.get (id);
+		return null;
+	}
+	
+	public static Horario getHorario (int id) {
+		if (horarios.size ()>id) 
+			return horarios.get (id);
 		return null;
 	}
 	public static Materia getMateria (String nombre) {
