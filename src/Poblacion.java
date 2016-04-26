@@ -31,21 +31,21 @@ public class Poblacion {
 		return individuos[0];
 	}
 	private Individuo[] crearHijos () {
-		Individuo[] padres = padresAptos (), hijos = new Individuo[300];
+		Individuo[] padres = padresAptos (), hijos = new Individuo[350];
 
-		for (int i=0; i<600; i+=2) 
+		for (int i=0; i<700; i+=2) 
 			hijos[i/2] = procrear (padres[i], padres[i+1]);
 		
 		return hijos;
 	}
 	
 	private Individuo[] padresAptos () {
-		Individuo i, _elegidos[] = new Individuo[600];
+		Individuo i, _elegidos[] = new Individuo[700];
 		int m=0;
 		
 		Arrays.sort (individuos, new Comparador ());
 		do {
-			i = individuos[(int)(Math.random ()*250)];
+			i = individuos[(int)(Math.random ()*200)];
 			if (m<_elegidos.length && m%2==1 && !_elegidos[m-1].equals (i))
 				_elegidos[m++] = i;
 			else if (m<_elegidos.length && m%2==0)

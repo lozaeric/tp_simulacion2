@@ -11,7 +11,7 @@ public class Materia {
 	}
 	
 	public String toString () {
-	   return "Materia [nombre=" + nombre + "]";
+	   return "Materia [" + nombre + "]";
    }
 	
 	

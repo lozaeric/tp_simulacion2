@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 
 public class Profesor {
 	private Materia[] materias;
@@ -32,7 +30,7 @@ public class Profesor {
 	}
 	
 	public String toString () {
-	   return "Profesor [nombre=" + nombre + ", materias = "+Arrays.toString(materias)+"]";
+	   return "Profesor [" + nombre + "]";
    }
 	
 	public static int getContadorH () {
