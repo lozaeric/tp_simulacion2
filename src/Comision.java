@@ -2,12 +2,13 @@
 public class Comision {
 	private Profesor profesor;
 	private Materia materia;
+	private Horario horarios[];
 	
-	
-	public Comision (Profesor profesor, Materia materia) {
+	public Comision (Profesor profesor, Materia materia,Horario h,Horario h2) {
 	   super ();
 	   this.profesor = profesor;
 	   this.materia = materia;
+	   this.horarios = new Horario[]{h,h2};
    }
 	
 	public Profesor getProfesor () {
@@ -18,9 +19,18 @@ public class Comision {
 		return materia;
 	}
 	
+	public Horario getHorario1 () {
+		return horarios[0];
+	}
+	
+	public Horario getHorario2 () {
+		return horarios[1];
+	}
+	
 	public Comision combinar (Comision otro) {
 		Materia m; 
 		Profesor p;
+		Horario h,h2;
 		boolean mutado =  Math.random ()<=Poblacion.mutacion;
 		
 		if (mutado)
@@ -35,9 +45,19 @@ public class Comision {
 		else
 			m = p.getMaterias ()[(int)(Math.random ()*p.getMaterias ().length)];
 		
-		return new Comision (p,m);
-	}
+		if (otro.horarios[0].equals (horarios[0]) && (!mutado))
+			h = horarios[0];
+		else
+			h = p.getHorarios ()[(int)(Math.random ()*p.getHorarios ().length)];
 
+		if (otro.horarios[1].equals (horarios[1]) && (!mutado))
+			h2 = horarios[1];
+		else
+			h2 = p.getHorarios ()[(int)(Math.random ()*p.getHorarios ().length)];
+			
+		return new Comision (p,m, h,h2);
+	}
+/*
 	public boolean equals (Object obj) {
 	   if (this == obj)
 		   return true;
@@ -60,12 +80,12 @@ public class Comision {
 		   return false;
 	   return true;
    }
-
+*/
 	public String toString () {
 	   return "Comision [profesor=" + profesor + ", materia=" + materia + "]";
    }
 
 	public int getId () {
-		return Poblacion.profesores.indexOf (profesor)*100+Poblacion.materias.indexOf (materia);
+		return Poblacion.profesores.indexOf (profesor)*100000+Poblacion.materias.indexOf (materia)*1000+Poblacion.materias.indexOf (horarios[0])*10+Poblacion.materias.indexOf (horarios[1]);
 	}
 }
