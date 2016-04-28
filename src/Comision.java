@@ -48,12 +48,12 @@ public class Comision {
 		if (otro.horarios[0].equals (horarios[0]) && (!mutado))
 			h = horarios[0];
 		else
-			h = Math.random ()>=0.5? horarios[0]:otro.horarios[0];	
+			h = p.getHorarios ()[(int)(Math.random ()*p.getHorarios ().length)];
 
 		if (otro.horarios[1].equals (horarios[1]) && (!mutado))
 			h2 = horarios[1];
 		else
-			h2 = Math.random ()>=0.5? horarios[1]:otro.horarios[1];	
+			h2 = p.getHorarios ()[(int)(Math.random ()*p.getHorarios ().length)];
 			
 		return new Comision (p,m, h,h2);
 	}
@@ -86,6 +86,6 @@ public class Comision {
    }
 
 	public int getId () {
-		return Poblacion.profesores.indexOf (profesor)*100+Poblacion.materias.indexOf (materia);
+		return Poblacion.profesores.indexOf (profesor)*100000+Poblacion.materias.indexOf (materia)*1000+Poblacion.materias.indexOf (horarios[0])*10+Poblacion.materias.indexOf (horarios[1]);
 	}
 }

@@ -13,9 +13,9 @@ public class Main {
 		Poblacion.materias = materias;
 		
 		//Profesores disponibles
-		Horario h[] = new Horario[] {new Horario ("viernes", "mañana"), new Horario ("jueves", "mañana"), new Horario ("jueves", "noche"), new Horario ("miercoles", "mañana")};
-		Horario h2[] = new Horario[] {new Horario ("martes", "mañana"), new Horario ("miercoles", "mañana")};
-		Horario h4[] = new Horario[] {new Horario ("viernes", "mañana"),new Horario ("martes", "mañana")};
+		Horario h[] = new Horario[] {new Horario ("viernes", "mañana"), new Horario ("jueves", "mañana"), new Horario ("jueves", "noche"), new Horario ("miercoles", "noche")};
+		Horario h2[] = new Horario[] {new Horario ("martes", "mañana"), new Horario ("miercoles", "noche")};
+		Horario h4[] = new Horario[] {new Horario ("viernes", "noche"),new Horario ("martes", "mañana")};
 		Materia m[] = new Materia[] {Poblacion.getMateria ("objetos"),Poblacion.getMateria ("control"), Poblacion.getMateria("fisica"), Poblacion.getMateria("algoritmo")};
 		Materia m2[] = new Materia[] {Poblacion.getMateria("algoritmo"), Poblacion.getMateria("analisis")};
 		Materia m3[] = new Materia[] {Poblacion.getMateria("control"),Poblacion.getMateria("algoritmo"), Poblacion.getMateria("analisis")};

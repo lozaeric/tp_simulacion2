@@ -27,4 +27,30 @@ public class Horario {
 	public String toString () {
 		return "dia: "+dia+", turno="+turno;
 	}
+
+
+	public boolean equals (Object obj) {
+	   if (this == obj)
+		   return true;
+	   if (obj == null)
+		   return false;
+	   if (getClass () != obj.getClass ())
+		   return false;
+	   Horario other = (Horario) obj;
+	   if (dia == null) {
+		   if (other.dia != null)
+			   return false;
+	   }
+	   else if (!dia.equals (other.dia))
+		   return false;
+	   if (turno == null) {
+		   if (other.turno != null)
+			   return false;
+	   }
+	   else if (!turno.equals (other.turno))
+		   return false;
+	   return true;
+   }
+	
+	
 }

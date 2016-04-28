@@ -36,4 +36,11 @@ public class Profesor {
 	public static int getContadorH () {
 		return contadorHorarios;
 	}
+	public boolean esSuHorario (Horario otro) {
+		for (Horario h : horarios) {
+			if (h.equals(otro))
+				return true;
+		}
+		return false;
+   }
 }
