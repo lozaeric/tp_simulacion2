@@ -52,8 +52,11 @@ public class Comision {
 
 		if (otro.horarios[1].equals (horarios[1]) && (!mutado))
 			h2 = horarios[1];
-		else
-			h2 = p.getHorarios ()[(int)(Math.random ()*p.getHorarios ().length)];
+		else {
+			do {
+				h2 = p.getHorarios ()[(int)(Math.random ()*p.getHorarios ().length)];
+			} while (p.getHorarios ().length>1 && h2.equals (h));
+		}
 			
 		return new Comision (p,m, h,h2);
 	}

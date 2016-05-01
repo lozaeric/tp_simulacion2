@@ -33,9 +33,9 @@ public class Main {
 		//Configuracion de otros parametros
 		Poblacion.max = Profesor.contadorHorarios; 
 		Poblacion.f = new Funcion ();
-		Poblacion.mutacion = 0.005;
+		Poblacion.mutacion = 0.01;
 		Poblacion p = new Poblacion ();
-		Individuo mejor = p.ejecutar (60); //iteraciones
+		Individuo mejor = p.ejecutar (35); //iteraciones
 		
 		
 		

@@ -31,7 +31,7 @@ public class Individuo {
 			if (!horarios.containsKey (Poblacion.profesores.indexOf (c.getProfesor ())))
 				horarios.put (Poblacion.profesores.indexOf (c.getProfesor ()), new Integer[0]);		
 			
-			if (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())).length<=c.getProfesor ().getHorarios ().length && c.getProfesor ().esSuMateria (c.getMateria ()) && c.getProfesor ().esSuHorario (c.getHorario1 ()) && c.getProfesor ().esSuHorario (c.getHorario2 ()) && !esRepetido (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())), c.getHorario1 (),c.getHorario2 ()))
+			if (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())).length<=c.getProfesor ().getHorarios ().length && c.getProfesor ().esSuMateria (c.getMateria ()) && !c.getHorario1 ().equals (c.getHorario2 ()) && c.getProfesor ().esSuHorario (c.getHorario1 ()) && c.getProfesor ().esSuHorario (c.getHorario2 ()) && !esRepetido (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())), c.getHorario1 (),c.getHorario2 ()))
 				sb.append("Comision "+(i++)+'\t'+c.getProfesor ().toString ()+'\t'+c.getMateria ().toString ()+'\t'+c.getHorario1()+'\t'+c.getHorario2()+'\n');
 			else {
 				System.out.println ("Comision "+(i++)+'\t'+c.getProfesor ().toString ()+'\t'+c.getMateria ().toString ()+'\t'+c.getHorario1()+'\t'+c.getHorario2());

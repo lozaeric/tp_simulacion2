@@ -50,6 +50,8 @@ public class Funcion {
 					fitness+=200;
 				if (h1.tieneMismoHorario(h2))
 					fitness+=100;
+				if (!h1.equals (h2))
+					fitness+=150;				
 		}
 		
 		
