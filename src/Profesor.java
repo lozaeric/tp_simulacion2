@@ -30,7 +30,7 @@ public class Profesor {
 	}
 	
 	public String toString () {
-	   return "Profesor [" + nombre + "]";
+	   return nombre;
    }
 	
 	public static int getContadorH () {

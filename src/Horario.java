@@ -25,7 +25,7 @@ public class Horario {
 	}
 	
 	public String toString () {
-		return "dia: "+dia+", turno="+turno;
+		return dia+"-"+turno;
 	}
 
 

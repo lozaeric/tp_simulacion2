@@ -26,7 +26,7 @@ public class Main {
 		profesores.add (new Profesor (m3,h, "mayer"));
 		profesores.add (new Profesor (m,h4, "dratman"));	
 		profesores.add (new Profesor (m2,h2, "ezequiel"));		
-		profesores.add (new Profesor (m3,h2, "fede"));
+		profesores.add (new Profesor (m3,h2, "federico"));
 		profesores.add (new Profesor (m4,h4, "graciana"));
 		Poblacion.profesores = profesores;
 		
@@ -35,7 +35,7 @@ public class Main {
 		Poblacion.f = new Funcion ();
 		Poblacion.mutacion = 0.01;
 		Poblacion p = new Poblacion ();
-		Individuo mejor = p.ejecutar (35); //iteraciones
+		Individuo mejor = p.ejecutar (30); //iteraciones
 		
 		
 		

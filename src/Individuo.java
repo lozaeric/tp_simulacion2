@@ -27,16 +27,16 @@ public class Individuo {
 		HashMap<Integer, Integer[]> horarios = new HashMap<Integer, Integer[]>();
 		int i=1;
 		
+		sb.append ("Comision\tProfesor\t\tMateria\t\tHorario\t\t\tHorario\n");
 		for (Comision c : comisiones) {
 			if (!horarios.containsKey (Poblacion.profesores.indexOf (c.getProfesor ())))
 				horarios.put (Poblacion.profesores.indexOf (c.getProfesor ()), new Integer[0]);		
 			
 			if (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())).length<=c.getProfesor ().getHorarios ().length && c.getProfesor ().esSuMateria (c.getMateria ()) && !c.getHorario1 ().equals (c.getHorario2 ()) && c.getProfesor ().esSuHorario (c.getHorario1 ()) && c.getProfesor ().esSuHorario (c.getHorario2 ()) && !esRepetido (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())), c.getHorario1 (),c.getHorario2 ()))
-				sb.append("Comision "+(i++)+'\t'+c.getProfesor ().toString ()+'\t'+c.getMateria ().toString ()+'\t'+c.getHorario1()+'\t'+c.getHorario2()+'\n');
+				sb.append((i++)+"\t\t"+c.getProfesor ().toString ()+"   \t\t"+c.getMateria ().toString ()+"  \t"+c.getHorario1()+"\t\t"+c.getHorario2()+'\n');
 			else {
-				System.out.println ("Comision "+(i++)+'\t'+c.getProfesor ().toString ()+'\t'+c.getMateria ().toString ()+'\t'+c.getHorario1()+'\t'+c.getHorario2());
-				System.out.println (esRepetido (horarios.get (Poblacion.profesores.indexOf (c.getProfesor ())), c.getHorario1 (),c.getHorario2 ()));
-				System.out.println ("Comision incoherente, sus datos son obviados"+'\n');
+				System.out.println ((i++)+"\t\t"+c.getProfesor ().toString ()+"    \t"+c.getMateria ().toString ()+"  \t"+c.getHorario1()+"\t\t"+c.getHorario2()+'\n');
+				System.out.println ("Comision incorrecta, sus datos son obviados"+'\n');
 			}
 			
 			Integer array[] = horarios.get (Poblacion.profesores.indexOf (c.getProfesor ()));
